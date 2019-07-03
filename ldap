@@ -1,0 +1,20 @@
+  - challenge: true
+    login: true
+    mappingMethod: claim
+    name: Fubon_AD1
+    provider:
+      apiVersion: v1
+      kind: LDAPPasswordIdentityProvider
+      attributes:
+        id:
+        - mail
+        email:
+        - mail
+        name:
+        - cn
+        preferredUsername:
+        - uid
+      insecure: true
+      bindDN: CN=ocp_ad,OU=BNK,DC=group,DC=fb,DC=com
+      bindPassword:  
+      url: ldap://172.16.221.16:389/OU=TTW,OU=BU,DC=group,DC=fb,DC=com?mail?sub?(objectClass=person)
