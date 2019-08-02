@@ -1,0 +1,26 @@
+ACCESS TOKEN  8aa04db28287ecb9ce7fef6137b73167b634327320b2895a4a904a882ec3a9db
+
+10.11.2.7  3scale-admin.cloudt.groupt.fbt.com
+
+nas  PV
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: 3scale-api-management-system-stroage
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 100Gi
+  PersistentVolumeReclaimPolicy: Retain
+  nfs:
+   path: /CLDNFSSFOCPT/3scale-system-storage
+   server: 10.11.3.211
+  storageClassName: static
+  
+  oc create secret generic apicast-configuration-url-secret --from-literal=password=https://8aa04db28287ecb9ce7fef6137b73167b634327320b2895a4a904a882ec3a9db@3scale-admin.cloudt.groupt.fbt.com --type=kubernetes.io/basic-auth
+  
+/opt/amp/templates/custom/amp-hostPath/amp-custom-hostpath.yml
+/opt/amp/templates/custom/apicast-production.yml
+/opt/amp/templates/custom/apicast-staging.yml
